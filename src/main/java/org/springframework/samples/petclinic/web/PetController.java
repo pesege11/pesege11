@@ -110,4 +110,20 @@ public class PetController {
         }
     }
 
+    // Delete: a8081
+
+    @RequestMapping(value = "/pets/{petId}/edit", method = RequestMethod.POST, params="delete")
+    public String delete(@Valid Pet pet, BindingResult result, Owner owner, ModelMap model) {
+        System.out.println("Deleting pet "+pet.getId()+" to owner "+owner.getId()+"\n");
+        if (result.hasErrors()) {
+            model.put("pet", pet);
+            return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
+        } else {
+            owner.deletePet(pet);
+            this.clinicService.deletePet(pet);
+            return "redirect:/owners/{ownerId}";
+        }
+    }
+    
+
 }

@@ -57,4 +57,12 @@ public interface PetRepository {
      */
     void save(Pet pet) throws DataAccessException;
 
+    /**
+     * Delete a <code>Pet</code> to the data store.
+     * 
+     * @param pet the <code>Pet</code> to delete
+     * @author a8081
+     */
+    void delete(Pet pet);
+
 }

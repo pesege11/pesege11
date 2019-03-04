@@ -107,6 +107,17 @@ public class Owner extends Person {
         pet.setOwner(this);
     }
 
+
+    /**
+     * Removes a pet from owner's pets when the pet is deleted
+     * 
+     * @param pet Pet to be deleted
+     * @author a8081
+     */
+    public void deletePet(Pet pet) {
+        getPetsInternal().remove(pet);
+    }
+
     /**
      * Return the Pet with the given name, or null if none found for this Owner.
      *

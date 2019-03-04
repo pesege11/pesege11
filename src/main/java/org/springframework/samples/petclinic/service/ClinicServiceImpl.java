@@ -99,6 +99,14 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
+    @Transactional
+    public void deletePet(Pet pet){
+        System.out.println("deleting pet: "+pet+"\n");
+        petRepository.delete(pet);
+        System.out.println("deleted pet: "+pet+"\n");
+    }
+
+    @Override
     @Transactional(readOnly = true)
     @Cacheable(value = "vets")
     public Collection<Vet> findVets() throws DataAccessException {
