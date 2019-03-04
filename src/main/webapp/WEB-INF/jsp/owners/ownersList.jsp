@@ -1,4 +1,5 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,16 +7,16 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="owners">
-    <h2>Owners</h2>
+    <h2><fmt:message key="owners"/></h2>
 
     <table id="ownersTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Name</th>
-            <th style="width: 200px;">Address</th>
-            <th>City</th>
-            <th style="width: 120px">Telephone</th>
-            <th>Pets</th>
+            <th style="width: 150px;"><fmt:message key="name"/></th>
+            <th style="width: 200px;"><fmt:message key="address"/></th>
+            <th><fmt:message key="city"/></th>
+            <th style="width: 120px"><fmt:message key="telephone"/></th>
+            <th><fmt:message key="pets"/></th>
         </tr>
         </thead>
         <tbody>
