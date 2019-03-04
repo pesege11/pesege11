@@ -100,6 +100,7 @@ public class PetController {
 
     @RequestMapping(value = "/pets/{petId}/edit", method = RequestMethod.POST)
     public String processUpdateForm(@Valid Pet pet, BindingResult result, Owner owner, ModelMap model) {
+        System.out.println("ESTA ENTRANDO EN EL UPDATE \n");
         if (result.hasErrors()) {
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
@@ -109,5 +110,16 @@ public class PetController {
             return "redirect:/owners/{ownerId}";
         }
     }
+
+    // Delete: a8081
+    @RequestMapping(value = "/pets/{petId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("petId") int petId, @PathVariable("ownerId") int ownerId, ModelMap model) {
+    		Owner ow = this.clinicService.findOwnerById(ownerId);
+    		Pet p = this.clinicService.findPetById(petId);
+            ow.deletePet(p);
+            this.clinicService.deletePet(p);
+            return "redirect:/owners/{ownerId}";
+    }
+    
 
 }

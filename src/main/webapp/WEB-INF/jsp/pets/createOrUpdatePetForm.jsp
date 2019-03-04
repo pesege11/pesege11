@@ -48,6 +48,7 @@
             </div>
         </form:form>
         <c:if test="${!pet['new']}">
+        	<a href="/owners/${owner.id}/pets/${pet.id}/delete">Delete</a>
         </c:if>
     </jsp:body>
 </petclinic:layout>
