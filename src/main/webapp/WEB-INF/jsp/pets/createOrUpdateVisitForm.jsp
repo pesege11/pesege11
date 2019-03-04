@@ -1,7 +1,9 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 
@@ -14,16 +16,16 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <h2><c:if test="${visit['new']}">New </c:if>Visit</h2>
+        <h2><c:if test="${visit['new']}"><fmt:message key="new"/>  </c:if><fmt:message key="visit"/></h2>
 
         <b>Pet</b>
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Birth Date</th>
-                <th>Type</th>
-                <th>Owner</th>
+                <th><fmt:message key="pet"/></th>
+                <th><fmt:message key="birthDate"/></th>
+                <th><fmt:message key="type"/></th>
+                <th><fmt:message key="owner"/></th>
             </tr>
             </thead>
             <tr>
@@ -36,14 +38,14 @@
 
         <form:form modelAttribute="visit" class="form-horizontal">
             <div class="form-group has-feedback">
-                <petclinic:inputField label="Date" name="date"/>
-                <petclinic:inputField label="Description" name="description"/>
+                <petclinic:inputField label="Fecha" name="date"/>
+                <petclinic:inputField label="Descripción" name="description"/>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="hidden" name="petId" value="${visit.pet.id}"/>
-                    <button class="btn btn-default" type="submit">Add Visit</button>
+                    <button class="btn btn-default" type="submit"><fmt:message key="add.visit"/></button>
                 </div>
             </div>
         </form:form>
@@ -52,8 +54,8 @@
         <b>Previous Visits</b>
         <table class="table table-striped">
             <tr>
-                <th>Date</th>
-                <th>Description</th>
+                <th><fmt:message key="date"/></th>
+                <th><fmt:message key="description"/></th>
             </tr>
             <c:forEach var="visit" items="${visit.pet.visits}">
                 <c:if test="${!visit['new']}">
