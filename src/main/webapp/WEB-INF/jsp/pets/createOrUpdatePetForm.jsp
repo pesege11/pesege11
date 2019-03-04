@@ -44,9 +44,9 @@
                     </c:choose>
                 </div>
             </div>
-            <c:if test="${!pet['new']}">
-                    <input type="submit" name="delete" value="Delete Pet" />
-            </c:if>
         </form:form>
+        <c:if test="${!pet['new']}">
+        	<a href="/owners/${owner.id}/pets/${pet.id}/delete">Delete</a>
+        </c:if>
     </jsp:body>
 </petclinic:layout>

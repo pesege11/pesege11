@@ -100,10 +100,8 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional
-    public void deletePet(Pet pet){
-        System.out.println("deleting pet: "+pet+"\n");
-        petRepository.delete(pet);
-        System.out.println("deleted pet: "+pet+"\n");
+    public void deletePet(Pet pet) throws DataAccessException{
+        petRepository.delete(pet.getId());
     }
 
     @Override
