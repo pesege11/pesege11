@@ -42,4 +42,7 @@
             </td>
         </tr>
     </table>
+    
+         <a href="<spring:url value="/vets/create" />"><fmt:message key="view.create"/></a>
+    
 </petclinic:layout>
