@@ -46,4 +46,5 @@ public interface VetRepository {
    	List<Specialty> findSpecialties() throws DataAccessException;
 
 
+
 }

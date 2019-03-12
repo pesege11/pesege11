@@ -41,6 +41,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class VetController {
+	
+	 private static final String VIEWS_VET_CREATE_OR_UPDATE_FORM = "vets/createOrUpdateVetForm";
 
     private final ClinicService clinicService;
 
