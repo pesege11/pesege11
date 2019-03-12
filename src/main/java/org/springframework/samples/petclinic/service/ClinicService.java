@@ -52,4 +52,6 @@ public interface ClinicService {
     
     void deletePet(Pet pet) throws DataAccessException;
 
+	void saveVet(Vet vet) throws DataAccessException;
+
 }

@@ -77,6 +77,12 @@ public class ClinicServiceImpl implements ClinicService {
     public void saveOwner(Owner owner) throws DataAccessException {
         ownerRepository.save(owner);
     }
+    
+    @Override
+    @Transactional
+    public void saveVet(Vet vet) throws DataAccessException {
+       vetRepository.save(vet);
+    }
 
 
     @Override
