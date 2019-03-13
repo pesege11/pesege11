@@ -58,4 +58,6 @@ public interface ClinicService {
 
 	Collection<Specialty> findSpecialties() throws DataAccessException;
 
+	Vet findVetById(int vetId) throws DataAccessException;
+
 }
