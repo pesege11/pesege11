@@ -21,11 +21,14 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Booking;
-import org.springframework.samples.petclinic.service.HotelService;
+import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,43 +36,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BookingController {
 
-    private final HotelService hotelService;
+    private final ClinicService clinicService;
 
 
     @Autowired
-    public BookingController(HotelService hotelService) {
-        this.hotelService = hotelService;
+    public BookingController(ClinicService clinicService) {
+        this.clinicService = clinicService;
     }
 
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
-
-
-    // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-    //TODO Cambiar path
-    @RequestMapping(value = "/owners/*/pets/{petId}/visits/new", method = RequestMethod.GET)
-    public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-        return "pets/createOrUpdateVisitForm";
+    
+    @ModelAttribute("booking")
+    public Booking loadPetWithBooking(@PathVariable("petId") int petId) {
+        Pet pet = this.clinicService.findPetById(petId);
+        Booking booking = new Booking();
+        pet.addBooking(booking);
+        return booking;
     }
 
-    // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
     //TODO Cambiar path
-    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/owners/*/pets/{petId}/bookings/new", method = RequestMethod.GET)
+    public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
+        return "pets/createBookingForm";
+    }
+
+    //TODO Cambiar path
+    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/new", method = RequestMethod.POST)
     public String processNewVisitForm(@Valid  Booking booking, BindingResult result) {
         if (result.hasErrors()) {
-            return "pets/createOrUpdateVisitForm";
+            return "pets/createBookingForm";
         } else {
-            this.hotelService.saveBooking(booking);
+            this.clinicService.saveBooking(booking);
             return "redirect:/owners/{ownerId}";
         }
     }
-
-//    @RequestMapping(value = "/owners/*/pets/{petId}/visits", method = RequestMethod.GET)
-//    public String showVisits(@PathVariable int petId, Map<String, Object> model) {
-//        model.put("s", this.hotelService.findPetById(petId).getVisits());
-//        return "List";
-//    }
 
 }

@@ -20,11 +20,13 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.repository.BookingRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
@@ -45,13 +47,16 @@ public class ClinicServiceImpl implements ClinicService {
     private VetRepository vetRepository;
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
+    private BookingRepository bookingRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, 
+    		OwnerRepository ownerRepository, VisitRepository visitRepository, BookingRepository bookingRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
+        this.bookingRepository = bookingRepository;
     }
 
     @Override
@@ -120,6 +125,14 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
+	}
+	
+	//Pet Hotel
+	
+	@Override
+	@Transactional
+	public void saveBooking(Booking booking) throws DataAccessException {
+		bookingRepository.save(booking);
 	}
 
 

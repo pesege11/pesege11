@@ -88,6 +88,13 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}"><fmt:message key="add.visit"/></a>
                             </td>
+                            <td>
+                                <spring:url value="/owners/{ownerId}/pets/{petId}/bookings/new" var="bookingUrl">
+                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                    <spring:param name="petId" value="${pet.id}"/>
+                                </spring:url>
+                                <a href="${fn:escapeXml(bookingUrl)}"><fmt:message key="add.booking"/></a>
+                            </td>
                         </tr>
                     </table>
                 </td>
