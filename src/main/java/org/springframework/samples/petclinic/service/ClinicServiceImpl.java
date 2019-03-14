@@ -115,7 +115,6 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional(readOnly = true)
     public Vet findVetById(int id) throws DataAccessException {
-        //return petRepository.findById(id);
     	return vetRepository.findById(id);
     }
 
