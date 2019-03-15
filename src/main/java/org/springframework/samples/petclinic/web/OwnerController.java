@@ -22,9 +22,12 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -134,5 +137,19 @@ public class OwnerController {
         mav.addObject(this.clinicService.findOwnerById(ownerId));
         return mav;
     }
+    
+    
+    //Delete Owner
+    @RequestMapping(value = "/owners/{ownerId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("ownerId") int ownerId, ModelMap model) {
+    		Owner ow = this.clinicService.findOwnerById(ownerId);
+    		for (Pet pet : ow.getPets()) {
+    			ow.deletePet(pet);
+    			this.clinicService.deletePet(pet);;
+    		}
+    		this.clinicService.deleteOwner(ow);
+            return "redirect:/owners";
+    }
 
+    
 }
