@@ -21,9 +21,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -94,5 +96,13 @@ public class VisitController {
         model.put("visits", this.clinicService.findPetById(petId).getVisits());
         return "visitList";
     }
-
+    
+  //Delete Visit
+    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("visitId") int visitId, ModelMap model) {
+    		Visit vst = this.clinicService.findVisitById(visitId);
+			this.clinicService.deleteVisit(vst);
+    		return "redirect:/owners/{ownerId}";
+    }
+       
 }

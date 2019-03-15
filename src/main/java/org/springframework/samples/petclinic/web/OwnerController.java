@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -143,9 +144,12 @@ public class OwnerController {
     @RequestMapping(value = "/owners/{ownerId}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable("ownerId") int ownerId, ModelMap model) {
     		Owner ow = this.clinicService.findOwnerById(ownerId);
-    		for (Pet pet : ow.getPets()) {
-    			ow.deletePet(pet);
-    			this.clinicService.deletePet(pet);;
+    		for (Pet p : ow.getPets()) {
+    			for (Visit vst : p.getVisits()) {
+        			this.clinicService.deleteVisit(vst);
+        		}
+    			ow.deletePet(p);
+    			this.clinicService.deletePet(p);;
     		}
     		this.clinicService.deleteOwner(ow);
             return "redirect:/owners";
