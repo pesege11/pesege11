@@ -72,5 +72,4 @@ public interface PetRepository {
     @Modifying
     @Query("DELETE FROM Pet p where p.id=:petId")
     void delete(@Param(value = "petId") int petId) throws DataAccessException;
-    
 }

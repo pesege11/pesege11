@@ -39,9 +39,7 @@
         <spring:param name="ownerId" value="${owner.id}"/>
     </spring:url>
     <a href="${fn:escapeXml(addUrl)}" class="btn btn-default"><fmt:message key="add.pet"/></a>
-	
-	<a href="/owners/${ownerId}/delete" class="btn btn-default">Delete</a>
-	
+
     <br/>
     <br/>
     <br/>

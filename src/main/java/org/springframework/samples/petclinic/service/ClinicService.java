@@ -56,6 +56,5 @@ public interface ClinicService {
     
     void deleteVet(Vet vet) throws DataAccessException;
 
-	void deleteOwner(Owner owner) throws DataAccessException;
 
 }

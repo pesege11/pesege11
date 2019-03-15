@@ -79,10 +79,6 @@ public class ClinicServiceImpl implements ClinicService {
         ownerRepository.save(owner);
     }
 
-    @Override
-	public void deleteOwner(Owner owner) throws DataAccessException {
-    	ownerRepository.delete(owner.getId());
-	}
 
     @Override
     @Transactional
@@ -131,5 +127,7 @@ public class ClinicServiceImpl implements ClinicService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
+
+
 
 }
