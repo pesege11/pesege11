@@ -22,6 +22,7 @@ import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 
@@ -70,5 +71,9 @@ public interface ClinicService {
 	void saveVet(Vet vet) throws DataAccessException;
 	
 	void saveBooking(Booking booking) throws DataAccessException;
+
+	Collection<Specialty> findSpecialties() throws DataAccessException;
+
+	Vet findVetById(int vetId) throws DataAccessException;
 
 }

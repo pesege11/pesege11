@@ -24,6 +24,7 @@ import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.BookingRepository;
@@ -151,6 +152,17 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
+		
+	}
+
+	@Override
+	public Collection<Specialty> findSpecialties() throws DataAccessException {
+		return vetRepository.findSpecialties();
+	}
+
+	@Override
+	public Vet findVetById(int vetId) throws DataAccessException {
+		return vetRepository.findById(vetId);
 	}
 	
 	//Pet Hotel

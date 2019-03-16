@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -24,6 +25,8 @@ import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 
 /**
@@ -45,6 +48,12 @@ public interface VetRepository {
     Collection<Vet> findAll() throws DataAccessException;
     
     void save(Vet vet) throws DataAccessException;
+    
+   	List<Specialty> findSpecialties() throws DataAccessException;
+   	
+    Vet findById(int id) throws DataAccessException;
+
+
 
     Vet findById(int id) throws DataAccessException;
     
