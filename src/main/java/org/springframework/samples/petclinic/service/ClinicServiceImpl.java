@@ -161,4 +161,14 @@ public class ClinicServiceImpl implements ClinicService {
 		bookingRepository.save(booking);
 	}
 
+	@Override
+	public Booking findBookingById(int id) throws DataAccessException {
+		return bookingRepository.findById(id);
+	}
+
+	@Override
+	public void deleteBooking(Booking booking) throws DataAccessException {
+		bookingRepository.delete(booking.getId());
+	}
+
 }

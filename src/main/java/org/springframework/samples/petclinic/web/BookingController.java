@@ -21,10 +21,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Booking;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -73,5 +76,17 @@ public class BookingController {
             return "redirect:/owners/{ownerId}";
         }
     }
+    
+    //Delete Booking - Not yet implemented
+    /*@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("petId") int petId, ModelMap model) {
+    		Pet p = this.clinicService.findPetById(petId);
+    		for (Booking b : p.getBookings()) {
+    			this.clinicService.deleteBooking(b);    			
+    		}
+            return "redirect:/owners/{ownerId}";
+    }
+    */
+    
 
 }

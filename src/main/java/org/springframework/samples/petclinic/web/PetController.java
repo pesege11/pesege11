@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -119,6 +120,9 @@ public class PetController {
     		Pet p = this.clinicService.findPetById(petId);
     		for (Visit vst : p.getVisits()) {
     			this.clinicService.deleteVisit(vst);
+    		}
+    		for (Booking b : p.getBookings()) {
+    			this.clinicService.deleteBooking(b);	
     		}
             ow.deletePet(p);
             this.clinicService.deletePet(p);

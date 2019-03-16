@@ -21,6 +21,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Vet;
@@ -148,6 +149,9 @@ public class OwnerController {
     			for (Visit vst : p.getVisits()) {
         			this.clinicService.deleteVisit(vst);
         		}
+    			for (Booking b : p.getBookings()) {
+    				this.clinicService.deleteBooking(b);    				
+    			}
     			ow.deletePet(p);
     			this.clinicService.deletePet(p);;
     		}
