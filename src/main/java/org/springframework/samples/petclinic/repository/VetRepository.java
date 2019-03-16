@@ -20,13 +20,10 @@ import java.util.Collection;
 import javax.transaction.Transactional;
 
 import org.springframework.dao.DataAccessException;
-<<<<<<< HEAD
 import org.springframework.samples.petclinic.model.Owner;
-=======
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
->>>>>>> deleteSupport#11
 import org.springframework.samples.petclinic.model.Vet;
 
 /**
@@ -47,16 +44,13 @@ public interface VetRepository {
      */
     Collection<Vet> findAll() throws DataAccessException;
     
-<<<<<<< HEAD
     void save(Vet vet) throws DataAccessException;
 
-=======
     Vet findById(int id) throws DataAccessException;
     
     @Transactional
     @Modifying
     @Query("DELETE FROM Vet v where v.id=:vetId")
     void delete(@Param(value = "vetId") int vetId) throws DataAccessException;
->>>>>>> deleteSupport#11
 
 }

@@ -21,19 +21,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
-<<<<<<< HEAD
-=======
 import org.springframework.samples.petclinic.model.Pet;
->>>>>>> deleteSupport#11
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
 import org.springframework.validation.BindingResult;
-=======
 import org.springframework.ui.ModelMap;
->>>>>>> deleteSupport#11
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
