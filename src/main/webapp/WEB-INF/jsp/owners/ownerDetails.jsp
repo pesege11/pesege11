@@ -39,7 +39,9 @@
         <spring:param name="ownerId" value="${owner.id}"/>
     </spring:url>
     <a href="${fn:escapeXml(addUrl)}" class="btn btn-default"><fmt:message key="add.pet"/></a>
-
+	
+	<a href="/owners/${ownerId}/delete" class="btn btn-default">Delete</a>
+	
     <br/>
     <br/>
     <br/>
@@ -71,6 +73,8 @@
                             <tr>
                                 <td><petclinic:localDate date="${visit.date}" pattern="yyyy-MM-dd"/></td>
                                 <td><c:out value="${visit.description}"/></td>
+                                <td><c:out value="${visit.id}"/></td>
+                                <td><a href="/owners/${ownerId}/pets/${pet.id}/visits/${visit.id}/delete" class="btn btn-default">Delete</a></td>
                             </tr>
                         </c:forEach>
                         <tr>

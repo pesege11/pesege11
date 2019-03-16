@@ -71,6 +71,7 @@ public class ClinicServiceImpl implements ClinicService {
         return ownerRepository.findById(id);
     }
 
+    
     @Override
     @Transactional(readOnly = true)
     public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
@@ -89,7 +90,21 @@ public class ClinicServiceImpl implements ClinicService {
        vetRepository.save(vet);
     }
 
+    @Override
+	public void deleteOwner(Owner owner) throws DataAccessException {
+    	ownerRepository.delete(owner.getId());
+	}
 
+    @Override
+	public Visit findVisitById(int id) throws DataAccessException {
+		return visitRepository.findById(id);
+	}
+    
+    @Override
+  	public void deleteVisit(Visit visit) throws DataAccessException {
+      	visitRepository.delete(visit.getId());
+  	}
+    
     @Override
     @Transactional
     public void saveVisit(Visit visit) throws DataAccessException {
@@ -121,7 +136,18 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Vet findVetById(int id) throws DataAccessException {
+    	return vetRepository.findById(id);
+    }
 
+    @Override
+	public void deleteVet(Vet vet) throws DataAccessException {
+    	vetRepository.delete(vet.getId());
+	}
+    
 	@Override
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
@@ -134,6 +160,5 @@ public class ClinicServiceImpl implements ClinicService {
 	public void saveBooking(Booking booking) throws DataAccessException {
 		bookingRepository.save(booking);
 	}
-
 
 }
