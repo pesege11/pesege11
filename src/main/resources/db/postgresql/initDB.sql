@@ -82,3 +82,14 @@ CREATE TABLE IF NOT EXISTS visits (
 );
 
 ALTER SEQUENCE visits_id_seq RESTART WITH 100;
+
+CREATE TABLE IF NOT EXISTS bookings (
+  id SERIAL,
+  pet_id INT NOT NULL,
+  check_in DATE,
+  check_out DATE,
+  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  CONSTRAINT pk_visits PRIMARY KEY (id)
+);
+
+ALTER SEQUENCE bookings_id_seq RESTART WITH 100;

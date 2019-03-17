@@ -20,6 +20,8 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Booking;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
@@ -34,20 +36,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * @author Juergen Hoeller
- * @author Ken Krebs
- * @author Arjen Poutsma
- * @author Michael Isvy
- */
 @Controller
-public class VisitController {
+public class BookingController {
 
     private final ClinicService clinicService;
 
 
     @Autowired
-    public VisitController(ClinicService clinicService) {
+    public BookingController(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
 
@@ -55,54 +51,42 @@ public class VisitController {
     public void setAllowedFields(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
-
-    /**
-     * Called before each and every @RequestMapping annotated method.
-     * 2 goals:
-     * - Make sure we always have fresh data
-     * - Since we do not use the session scope, make sure that Pet object always has an id
-     * (Even though id is not part of the form fields)
-     *
-     * @param petId
-     * @return Pet
-     */
-    @ModelAttribute("visit")
-    public Visit loadPetWithVisit(@PathVariable("petId") int petId) {
+    
+    @ModelAttribute("booking")
+    public Booking loadPetWithBooking(@PathVariable("petId") int petId) {
         Pet pet = this.clinicService.findPetById(petId);
-        Visit visit = new Visit();
-        pet.addVisit(visit);
-        return visit;
+        Booking booking = new Booking();
+        pet.addBooking(booking);
+        return booking;
     }
 
-    // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-    @RequestMapping(value = "/owners/*/pets/{petId}/visits/new", method = RequestMethod.GET)
+    //TODO Cambiar path
+    @RequestMapping(value = "/owners/*/pets/{petId}/bookings/new", method = RequestMethod.GET)
     public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-        return "pets/createOrUpdateVisitForm";
+        return "pets/createBookingForm";
     }
 
-    // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
-    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new", method = RequestMethod.POST)
-    public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+    //TODO Cambiar path
+    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/new", method = RequestMethod.POST)
+    public String processNewVisitForm(@Valid  Booking booking, BindingResult result) {
         if (result.hasErrors()) {
-            return "pets/createOrUpdateVisitForm";
+            return "pets/createBookingForm";
         } else {
-            this.clinicService.saveVisit(visit);
+            this.clinicService.saveBooking(booking);
             return "redirect:/owners/{ownerId}";
         }
     }
-
-    @RequestMapping(value = "/owners/*/pets/{petId}/visits", method = RequestMethod.GET)
-    public String showVisits(@PathVariable int petId, Map<String, Object> model) {
-        model.put("visits", this.clinicService.findPetById(petId).getVisits());
-        return "visitList";
-    }
     
-  //Delete Visit
-    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete", method = RequestMethod.GET)
-    public String delete(@PathVariable("visitId") int visitId, ModelMap model) {
-    		Visit vst = this.clinicService.findVisitById(visitId);
-			this.clinicService.deleteVisit(vst);
-    		return "redirect:/owners/{ownerId}";
+    //Delete Booking - Not yet implemented
+    /*@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable("petId") int petId, ModelMap model) {
+    		Pet p = this.clinicService.findPetById(petId);
+    		for (Booking b : p.getBookings()) {
+    			this.clinicService.deleteBooking(b);    			
+    		}
+            return "redirect:/owners/{ownerId}";
     }
-       
+    */
+    
+
 }
