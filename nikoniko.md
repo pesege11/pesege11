@@ -1,10 +1,37 @@
 NikoNiko Calendar
 
-##SPRINT 1
+SPRINT 1
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| Day 1         |               |                |                |                |                |                |
-| Day 2         |               |                |                |                |                |                |
-| Day 3         |               |                |                |                |                |                |
-| Day 4         |               |                |                |                |                |                |
+| 18 Marzo      |               |                |                |                |                |                |
+| 19 Marzo      |               |                |                |                |                |                |
+| 20 Marzo      |               |                |                |                |                |                |
+| 21 Marzo      |               |                |                |                |                |                |
+| 22 Marzo      |               |                |                |                |                |                |
+| 23 Marzo      |               |                |                |                |                |                |
+| 24 Marzo      |               |                |                |                |                |                |
+
+SPRINT 2
+
+| Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
+| ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
+| 25 Marzo      |               |                |                |                |                |                |
+| 26 Marzo      |               |                |                |                |                |                |
+| 27 Marzo      |               |                |                |                |                |                |
+| 28 Marzo      |               |                |                |                |                |                |
+| 29 Marzo      |               |                |                |                |                |                |
+| 30 Marzo      |               |                |                |                |                |                |
+| 31 Marzo      |               |                |                |                |                |                |
+
+SPRINT 3
+
+| Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
+| ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
+| 1 Abril       |               |                |                |                |                |                |
+| 2 Abril       |               |                |                |                |                |                |
+| 3 Abril       |               |                |                |                |                |                |
+| 4 Abril       |               |                |                |                |                |                |
+| 5 Abril       |               |                |                |                |                |                |
+| 6 Abril       |               |                |                |                |                |                |
+| 7 Abril       |               |                |                |                |                |                |
