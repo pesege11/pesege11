@@ -1,4 +1,4 @@
-NikoNiko Calendar
+NIKONIKO CALENDAR
 
 SPRINT 1
 
