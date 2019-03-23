@@ -111,21 +111,17 @@ public class Pet extends NamedEntity {
         visit.setPet(this);
     }
     
-    
     protected Set<Booking> getBookingsInternal() {
         if (this.bookings == null) {
             this.bookings = new HashSet<>();
         }
         return this.bookings;
     }
-
-    protected void setBookingsInternal(Set<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
+    
     public List<Booking> getBookings() {
         List<Booking> sortedBookings = new ArrayList<>(getBookingsInternal());
-        return sortedBookings;
+        PropertyComparator.sort(sortedBookings, new MutableSortDefinition("start", false, false));
+        return Collections.unmodifiableList(sortedBookings);
     }
 
     public void addBooking(Booking booking) {

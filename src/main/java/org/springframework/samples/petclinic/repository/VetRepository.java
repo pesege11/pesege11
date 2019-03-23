@@ -52,10 +52,6 @@ public interface VetRepository {
    	List<Specialty> findSpecialties() throws DataAccessException;
    	
     Vet findById(int id) throws DataAccessException;
-
-
-
-    Vet findById(int id) throws DataAccessException;
     
     @Transactional
     @Modifying

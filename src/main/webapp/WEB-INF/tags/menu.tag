@@ -38,6 +38,11 @@
                     <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                     <span>Error</span>
                 </petclinic:menuItem>
+                    
+                <petclinic:menuItem active="${name eq 'vets'}" url="/bookings" title="Pet Hotel">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span>Pet Hotel</span>
+                </petclinic:menuItem>    
 
             </ul>
         </div>

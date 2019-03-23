@@ -1,92 +1,67 @@
 /*
- * Copyright 2002-2013 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ *
+ * @author japarejo
+ */
 @Controller
 public class BookingController {
 
+    private static final String VIEWS_BOOKING_CREATE_OR_UPDATE_FORM = "bookings/createOrUpdateBookingForm";
     private final ClinicService clinicService;
-
 
     @Autowired
     public BookingController(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
 
-    @InitBinder
-    public void setAllowedFields(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
+    @RequestMapping(value = "/bookings/{petId}/new", method = RequestMethod.GET)
+    public String initCreationForm(@PathVariable("petId") int petId,ModelMap model) {
+        Booking booking = new Booking();
+        Pet pet=clinicService.findPetById(petId);
+        booking.setPet(pet);
+        model.put("booking", booking);        
+        return VIEWS_BOOKING_CREATE_OR_UPDATE_FORM;
+    }
+
+    @RequestMapping(value = "/bookings", method = RequestMethod.GET)
+    public String showAll( Map<String, Object> model) {
+
+        Collection<Booking> results = this.clinicService.findAllBookings();       
+        model.put("bookings", results);
+        return "bookings/bookingsList";
     }
     
-    @ModelAttribute("booking")
-    public Booking loadPetWithBooking(@PathVariable("petId") int petId) {
-        Pet pet = this.clinicService.findPetById(petId);
-        Booking booking = new Booking();
-        pet.addBooking(booking);
-        return booking;
-    }
-
-    //TODO Cambiar path
-    @RequestMapping(value = "/owners/*/pets/{petId}/bookings/new", method = RequestMethod.GET)
-    public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-        return "pets/createBookingForm";
-    }
-
-    //TODO Cambiar path
-    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/new", method = RequestMethod.POST)
-    public String processNewVisitForm(@Valid  Booking booking, BindingResult result) {
+    @RequestMapping(value = "/bookings/{petId}/new", method = RequestMethod.POST)
+    public String creationForm(@Valid Booking booking,@PathVariable("petId") int petId, BindingResult result) {
+        Pet pet=clinicService.findPetById(petId);
+        booking.setPet(pet);
         if (result.hasErrors()) {
-            return "pets/createBookingForm";
+            return VIEWS_BOOKING_CREATE_OR_UPDATE_FORM;
         } else {
             this.clinicService.saveBooking(booking);
-            return "redirect:/owners/{ownerId}";
+            return "redirect:/bookings";
         }
     }
-    
-    //Delete Booking - Not yet implemented
-    /*@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/bookings/{bookingId}/delete", method = RequestMethod.GET)
-    public String delete(@PathVariable("petId") int petId, ModelMap model) {
-    		Pet p = this.clinicService.findPetById(petId);
-    		for (Booking b : p.getBookings()) {
-    			this.clinicService.deleteBooking(b);    			
-    		}
-            return "redirect:/owners/{ownerId}";
-    }
-    */
-    
-
 }

@@ -40,11 +40,7 @@ public interface ClinicService {
 
     Pet findPetById(int id) throws DataAccessException;
     
-    Vet findVetById(int id) throws DataAccessException;
-    
     Visit findVisitById(int id) throws DataAccessException;
-    
-    Booking findBookingById(int id) throws DataAccessException;
     
     void savePet(Pet pet) throws DataAccessException;
 
@@ -69,11 +65,16 @@ public interface ClinicService {
 	void deleteBooking(Booking booking) throws DataAccessException;
 
 	void saveVet(Vet vet) throws DataAccessException;
-	
-	void saveBooking(Booking booking) throws DataAccessException;
 
 	Collection<Specialty> findSpecialties() throws DataAccessException;
 
 	Vet findVetById(int vetId) throws DataAccessException;
+	
+	Collection<Booking> findBookingsByPetId(int petId);
+	
+    Collection<Booking> findAllBookings();
+
+    void saveBooking(Booking booking);
+
 
 }

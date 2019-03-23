@@ -27,11 +27,11 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
-import org.springframework.samples.petclinic.repository.BookingRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.springdatajpa.BookingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -160,27 +160,25 @@ public class ClinicServiceImpl implements ClinicService {
 		return vetRepository.findSpecialties();
 	}
 
-	@Override
-	public Vet findVetById(int vetId) throws DataAccessException {
-		return vetRepository.findById(vetId);
-	}
-	
-	//Pet Hotel
-	
-	@Override
-	@Transactional
-	public void saveBooking(Booking booking) throws DataAccessException {
-		bookingRepository.save(booking);
-	}
-
-	@Override
-	public Booking findBookingById(int id) throws DataAccessException {
-		return bookingRepository.findById(id);
-	}
+    @Transactional(readOnly = true)
+    public Collection<Booking> findBookingsByPetId(int petId)
+    {
+        return bookingRepository.findByPetId(petId);
+    }
+    
+    @Transactional(readOnly = true)
+    public Collection<Booking> findAllBookings(){
+        return bookingRepository.findAll();
+    }
+    
+    @Transactional()
+    public void saveBooking(Booking booking){
+        bookingRepository.save(booking);
+    }
 
 	@Override
 	public void deleteBooking(Booking booking) throws DataAccessException {
-		bookingRepository.delete(booking.getId());
+		bookingRepository.delete(booking);
+		
 	}
-
 }
