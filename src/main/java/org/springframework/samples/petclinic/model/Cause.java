@@ -28,7 +28,7 @@ public class Cause extends BaseEntity {
     private Integer budgetTarget;
 
     @Column(name = "organization")
-    private Integer organization;
+    private String organization;
 
 	public String getName() {
 		return name;
@@ -54,11 +54,11 @@ public class Cause extends BaseEntity {
 		this.budgetTarget = budgetTarget;
 	}
 
-	public Integer getOrganization() {
+	public String getOrganization() {
 		return organization;
 	}
 
-	public void setOrganization(Integer organization) {
+	public void setOrganization(String organization) {
 		this.organization = organization;
 	}
 

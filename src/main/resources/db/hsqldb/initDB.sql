@@ -72,4 +72,19 @@ CREATE TABLE bookings (
 ALTER TABLE bookings ADD CONSTRAINT fk_bookings_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX bookings_pet_id ON bookings (pet_id);
 
+CREATE TABLE causes (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  name      	VARCHAR(255) NOT NULL,
+  description  	VARCHAR(255),
+  organization  VARCHAR(255) NOT NULL,
+  budgetTarget  INTEGER NOT NULL
+);
+CREATE INDEX causes_id ON causes (cause_id);
 
+CREATE TABLE donations (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  amount      INTEGER NOT NULL,
+  cause_id	  INTEGER NOT NULL
+);
+ALTER TABLE donations ADD CONSTRAINT fk_donations_cause FOREIGN KEY (cause_id) REFERENCES causes (id);
+CREATE INDEX donations_cause_id ON donations (cause_id);
