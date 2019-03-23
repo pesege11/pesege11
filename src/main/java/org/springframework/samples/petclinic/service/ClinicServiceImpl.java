@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Booking;
+import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -32,6 +34,8 @@ import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.repository.springdatajpa.BookingRepository;
+import org.springframework.samples.petclinic.repository.springdatajpa.CauseRepository;
+import org.springframework.samples.petclinic.repository.springdatajpa.DonationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,15 +53,20 @@ public class ClinicServiceImpl implements ClinicService {
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
     private BookingRepository bookingRepository;
+    private CauseRepository causeRepository;
+    private DonationRepository donationRepository;
 
     @Autowired
     public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, 
-    		OwnerRepository ownerRepository, VisitRepository visitRepository, BookingRepository bookingRepository) {
+    		OwnerRepository ownerRepository, VisitRepository visitRepository, BookingRepository bookingRepository,
+    		CauseRepository causeRepository, DonationRepository donationRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.bookingRepository = bookingRepository;
+        this.causeRepository = causeRepository;
+        this.donationRepository = donationRepository;
     }
 
     @Override
@@ -181,4 +190,15 @@ public class ClinicServiceImpl implements ClinicService {
 		bookingRepository.delete(booking);
 		
 	}
+
+	@Override
+	public Collection<Cause> findAllCauses() {
+		return this.causeRepository.findAll();
+	}
+
+	@Override
+	public Collection<Donation> findAllDonations() {
+		return this.donationRepository.findAll();
+	}
+
 }
