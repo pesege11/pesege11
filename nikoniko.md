@@ -4,12 +4,12 @@ SPRINT 1
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| 18 Marzo      |               |                |                |                |                |                |
-| 19 Marzo      |               |                |                |                |                |                |
-| 20 Marzo      |               |                |                |                |                |                |
-| 21 Marzo      |               |                |                |                |                |                |
-| 22 Marzo      |               |                |                |                |                |                |
-| 23 Marzo      |               |                |                |                |                |                |
+| 18 Marzo      |               |                |       -        |                |                |                |
+| 19 Marzo      |               |                |       -        |                |                |                |
+| 20 Marzo      |               |                |       -        |                |                |                |
+| 21 Marzo      |               |                |       -        |                |                |                |
+| 22 Marzo      |               |                |    :smiley:    |                |                |                |
+| 23 Marzo      |               |                |    :smiley:    |                |                |                |
 | 24 Marzo      |               |                |                |                |                |                |
 
 SPRINT 2
