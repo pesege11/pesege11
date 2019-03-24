@@ -8,7 +8,7 @@ SPRINT 1
 | 19 Marzo      |               |                |       -        |       -        |                |                |
 | 20 Marzo      |               |                |       -        |       -        |                |                |
 | 21 Marzo      |               |                |       -        |       -        |                |                |
-| 22 Marzo      |               |                |    :smiley:    |                |                |                |
+| 22 Marzo      |               |                |    :smiley:    |       -        |                |                |
 | 23 Marzo      |               |                |    :smiley:    |    :smiley:    |                |                |
 | 24 Marzo      |               |                |                |                |                |                |
 
