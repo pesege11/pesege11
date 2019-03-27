@@ -18,7 +18,7 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
  * @since 15.1.2013
  */
 public interface SpringDataDonationRepository extends DonationRepository, Repository<Donation, Integer> {
-
+	
 	@Query("SELECT d FROM Donation d where d.id=:donationId")
 	Donation findByDonationId(@Param("donationId") int donationId) throws DataAccessException;
 	
@@ -27,5 +27,6 @@ public interface SpringDataDonationRepository extends DonationRepository, Reposi
     @Modifying
     @Query("DELETE FROM Donation d where d.id=:donationId")
     void delete(@Param(value = "donationId") int donationId) throws DataAccessException;
+
 
 }

@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/causes/{causeId}")
 public class DonationController {
 
-    private static final String VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM = "causes/createOrUpdateDonationForm";
+    private static final String VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM = "donations/createOrUpdateDonationForm";
     private final ClinicService clinicService;
 
     @Autowired

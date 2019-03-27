@@ -33,9 +33,10 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.samples.petclinic.repository.springdatajpa.BookingRepository;
-import org.springframework.samples.petclinic.repository.springdatajpa.CauseRepository;
-import org.springframework.samples.petclinic.repository.springdatajpa.DonationRepository;
+
+import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -192,13 +193,41 @@ public class ClinicServiceImpl implements ClinicService {
 	}
 
 	@Override
-	public Collection<Cause> findAllCauses() {
-		return this.causeRepository.findAll();
+	@Transactional(readOnly = true)
+	public Collection<Cause> findAllCauses() throws DataAccessException {
+		return causeRepository.findAll();
 	}
 
 	@Override
-	public Collection<Donation> findAllDonations() {
-		return this.donationRepository.findAll();
+    @Transactional
+	public void saveCause(Cause cause) throws DataAccessException {
+		causeRepository.save(cause);
 	}
+
+	@Override
+	public Cause findCauseById(int causeId) throws DataAccessException {
+		return causeRepository.findByCauseId(causeId);
+	}
+
+	@Override
+	public Collection<Donation> findDonationsByCauseId(int causeId) {
+		return causeRepository.findDonationsByCauseId(causeId);
+	}
+
+	@Override
+	public void saveDonation(Donation donation) {
+		donationRepository.save(donation);
+	}
+
+	@Override
+	public void deleteCause(int causeId) throws DataAccessException {
+		Collection<Donation> donations = causeRepository.findDonationsByCauseId(causeId);
+		for (Donation donation : donations) {
+			donationRepository.delete(donation.getId());
+			
+		}
+		causeRepository.delete(causeId);
+	}
+	
 
 }
