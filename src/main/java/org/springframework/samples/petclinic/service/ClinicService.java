@@ -40,8 +40,6 @@ public interface ClinicService {
 
     Pet findPetById(int id) throws DataAccessException;
     
-    Vet findVetById(int id) throws DataAccessException;
-    
     Visit findVisitById(int id) throws DataAccessException;
     
     Booking findBookingById(int id) throws DataAccessException;

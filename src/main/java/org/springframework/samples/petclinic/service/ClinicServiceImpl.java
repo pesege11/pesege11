@@ -160,10 +160,6 @@ public class ClinicServiceImpl implements ClinicService {
 		return vetRepository.findSpecialties();
 	}
 
-	@Override
-	public Vet findVetById(int vetId) throws DataAccessException {
-		return vetRepository.findById(vetId);
-	}
 	
 	//Pet Hotel
 	
