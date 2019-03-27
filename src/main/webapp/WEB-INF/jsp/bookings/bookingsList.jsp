@@ -39,5 +39,4 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="/bookings/new" class="btn">Create new Booking</a>
 </petclinic:layout>

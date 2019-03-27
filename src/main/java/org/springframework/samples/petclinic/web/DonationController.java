@@ -16,7 +16,6 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
-
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -40,50 +39,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/causes/{causeId}")
 public class DonationController {
 
-    private static final String VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM = "causes/createOrUpdateDonationForm";
-    private final ClinicService clinicService;
-
-    @Autowired
-    public DonationController(ClinicService clinicService) {
-        this.clinicService = clinicService;
-    }
-    
-    @ModelAttribute("cause")
-    public Cause findCause(@PathVariable("causeId") int causeId) {
-        return this.clinicService.findCauseById(causeId);
-    }
-    
-    @RequestMapping(value = "/donations", method = RequestMethod.GET)
-    public String showAll(Cause cause,Map<String, Object> model) {
-    	Collection<Donation> resultados = this.clinicService.findDonationsByCauseId(cause.getId());       
-        model.put("resultados", resultados);
-        return "causes/donationsList";
-    }
-
-    @RequestMapping(value = "/donations/new", method = RequestMethod.GET)
-    public String initCreationForm(Cause cause, ModelMap model) {
-        Donation donation = new Donation();
-        cause.addDonation(donation);
-        Assert.isTrue(!(cause.getRemainingMoney()==0),"No puedes realizar una donación, la causa se ha cerrado");
-        model.put("donation", donation);
-        model.put("cause", cause);
-        System.out.println(donation.getCause().getRemainingMoney());
-        return VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
-    }
-
-    @RequestMapping(value = "/donations/new", params="addNew", method = RequestMethod.POST)
-    public String processCreationForm(Cause cause, @Valid Donation donation, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            model.put("donation", donation);
-            model.put("cause", cause);
-            return VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
-        } else {
-        	Boolean res = donation.getAmount()>cause.getRemainingMoney();
-        	Assert.isTrue(!res,"La cantidad introducida es mayor a la restante");
-            cause.addDonation(donation);
-            this.clinicService.saveDonation(donation);
-            return "redirect:/causes/{causeId}";
-        }
-    }
+//    private static final String VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM = "causes/createOrUpdateDonationForm";
+//    private final ClinicService clinicService;
+//
+//    @Autowired
+//    public DonationController(ClinicService clinicService) {
+//        this.clinicService = clinicService;
+//    }
+//    
+//    @ModelAttribute("cause")
+//    public Cause findCause(@PathVariable("causeId") int causeId) {
+//        return this.clinicService.findCauseById(causeId);
+//    }
+//    
+//    @RequestMapping(value = "/donations", method = RequestMethod.GET)
+//    public String showAll(Cause cause,Map<String, Object> model) {
+//    	Collection<Donation> resultados = this.clinicService.findDonationsByCauseId(cause.getId());       
+//        model.put("resultados", resultados);
+//        return "causes/donationsList";
+//    }
+//
+//    @RequestMapping(value = "/donations/new", method = RequestMethod.GET)
+//    public String initCreationForm(Cause cause, ModelMap model) {
+//        Donation donation = new Donation();
+//        cause.addDonation(donation);
+//        Assert.isTrue(!(cause.getRemainingMoney()==0),"No puedes realizar una donación, la causa se ha cerrado");
+//        model.put("donation", donation);
+//        model.put("cause", cause);
+//        System.out.println(donation.getCause().getRemainingMoney());
+//        return VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
+//    }
+//
+//    @RequestMapping(value = "/donations/new", params="addNew", method = RequestMethod.POST)
+//    public String processCreationForm(Cause cause, @Valid Donation donation, BindingResult result, ModelMap model) {
+//        if (result.hasErrors()) {
+//            model.put("donation", donation);
+//            model.put("cause", cause);
+//            return VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
+//        } else {
+//        	Boolean res = donation.getAmount()>cause.getRemainingMoney();
+//        	Assert.isTrue(!res,"La cantidad introducida es mayor a la restante");
+//            cause.addDonation(donation);
+//            this.clinicService.saveDonation(donation);
+//            return "redirect:/causes/{causeId}";
+//        }
+//    }
 
 }
