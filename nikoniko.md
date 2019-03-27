@@ -16,13 +16,13 @@ SPRINT 2
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| 25 Marzo      |               |                |                |                |                |                |
-| 26 Marzo      |               |                |                |                |                |                |
-| 27 Marzo      |               |                |                |                |                |                |
-| 28 Marzo      |               |                |                |                |                |                |
-| 29 Marzo      |               |                |                |                |                |                |
-| 30 Marzo      |               |                |                |                |                |                |
-| 31 Marzo      |               |                |                |                |                |                |
+| 25 Marzo      |               |                |       -        |                |                |                |
+| 26 Marzo      |               |                |       -        |                |                |                |
+| 27 Marzo      |               |                |     :smiley:   |                |                |                |
+| 28 Marzo      |               |                |       -        |                |                |                |
+| 29 Marzo      |               |                |       -        |                |                |                |
+| 30 Marzo      |               |                |       -        |                |                |                |
+| 31 Marzo      |               |                |       -        |                |                |                |
 
 SPRINT 3
 
