@@ -58,23 +58,6 @@ public class CauseController {
 	        return mav;
 	    }
 	    
-	    @RequestMapping(value = "/causes/{causeId}/edit", method = RequestMethod.GET)
-	    public String initUpdateOwnerForm(@PathVariable("causeId") int causeId, Model model) {
-	        Cause cause = this.clinicService.findCauseById(causeId);
-	        model.addAttribute(cause);
-	        return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
-	    }
-
-	    @RequestMapping(value = "/causes/{causeId}/edit", method = RequestMethod.POST)
-	    public String processUpdateOwnerForm(@Valid Cause cause, BindingResult result, @PathVariable("causeId") int causeId) {
-	        if (result.hasErrors()) {
-	            return VIEWS_CAUSE_CREATE_OR_UPDATE_FORM;
-	        } else {
-	            cause.setId(causeId);
-	            this.clinicService.saveCause(cause);
-	            return "redirect:/causes/{causeId}";
-	        }
-	    }
 	    
 	    @RequestMapping(value = "/causes/{causeId}/delete", method = RequestMethod.GET)
 	    public String processDeleteForm(@PathVariable("causeId") int causeId) {

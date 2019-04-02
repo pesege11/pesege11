@@ -29,11 +29,6 @@
         </tr>
     </table>
 
-    <spring:url value="{causeId}/edit.html" var="editUrl">
-        <spring:param name="causeId" value="${cause.id}"/>
-    </spring:url>
-    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar causa</a>
-    
      <spring:url value="{causeId}/delete" var="deleteUrl">
         <spring:param name="causeId" value="${cause.id}"/>
     </spring:url>
