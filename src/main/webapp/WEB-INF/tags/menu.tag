@@ -27,6 +27,11 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     <span>Find owners</span>
                 </petclinic:menuItem>
+                
+                <petclinic:menuItem active="${name eq 'cause'}" url="/causes.html" title="${cause}">
+                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                    <span>Causes</span>
+                </petclinic:menuItem>
 
                 <petclinic:menuItem active="${name eq 'vets'}" url="/vets.html" title="veterinarians">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
@@ -38,6 +43,11 @@
                     <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                     <span>Error</span>
                 </petclinic:menuItem>
+                    
+                <petclinic:menuItem active="${name eq 'vets'}" url="/bookings" title="Pet Hotel">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span>Pet Hotel</span>
+                </petclinic:menuItem>    
 
             </ul>
         </div>

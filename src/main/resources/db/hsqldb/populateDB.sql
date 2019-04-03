@@ -52,6 +52,7 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
-INSERT INTO bookings VALUES (5, 5, '2011-03-04', '2011-03-05');
-INSERT INTO bookings VALUES (6, 6, '2009-06-04', '2009-06-07');
-INSERT INTO bookings VALUES (7, 3, '2008-09-04', '2008-09-08');
+
+INSERT INTO causes VALUES (1,'Causa de prueba','Esto es una causa de prueba',2567.15,null,'Organizacion el Perico');
+
+INSERT INTO donations VALUES(1,200.5,'2019-02-14','Pepito',1);

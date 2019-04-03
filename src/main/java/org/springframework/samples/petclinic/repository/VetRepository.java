@@ -46,14 +46,13 @@ public interface VetRepository {
      * @return a <code>Collection</code> of <code>Vet</code>s
      */
     Collection<Vet> findAll() throws DataAccessException;
-    
+
     void save(Vet vet) throws DataAccessException;
-    
+
    	List<Specialty> findSpecialties() throws DataAccessException;
-   	
+
     Vet findById(int id) throws DataAccessException;
 
-    
     @Transactional
     @Modifying
     @Query("DELETE FROM Vet v where v.id=:vetId")

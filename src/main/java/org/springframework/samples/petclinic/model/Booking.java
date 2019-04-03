@@ -1,89 +1,82 @@
 /*
- * Copyright 2002-2013 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package org.springframework.samples.petclinic.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * Simple JavaBean domain object representing a visit.
  *
- * @author Ken Krebs
+ * @author japarejo
  */
 @Entity
 @Table(name = "bookings")
 public class Booking extends BaseEntity {
-
-    /**
-     * Holds value of check in date.
-     */
-    @Column(name = "check_in")
+    
+    
+    @Column(name = "start")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private LocalDate checkIn;
-
-    /**
-     * Holds value of check out date.
-     */
-    @Column(name = "check_out")
+    private LocalDate start;
+    
+    @Column(name = "finish")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private LocalDate checkOut;
+    private LocalDate finish;
 
-    /**
-     * Holds value of property pet.
-     */
+    
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
+    /**
+     * @return the start
+     */
+    public LocalDate getStart() {
+        return start;
+    }
 
     /**
-     * Creates a new instance of Booking for the current date
+     * @param start the start to set
      */
-    public Booking() {
-        this.checkIn = LocalDate.now();
+    public void setStart(LocalDate start) {
+        this.start = start;
     }
 
-    public LocalDate getCheckIn() {
-        return this.checkIn;
+    /**
+     * @return the finish
+     */
+    public LocalDate getFinish() {
+        return finish;
     }
 
-    public void setCheckIn(LocalDate in) {
-        this.checkIn = in;
-    }
-    
-    public LocalDate getCheckOut() {
-        return this.checkOut;
-    }
-
-    public void setCheckOut(LocalDate out) {
-        this.checkOut = out;
+    /**
+     * @param finish the finish to set
+     */
+    public void setFinish(LocalDate finish) {
+        this.finish = finish;
     }
 
+    /**
+     * @return the pet
+     */
     public Pet getPet() {
-        return this.pet;
+        return pet;
     }
 
+    /**
+     * @param pet the pet to set
+     */
     public void setPet(Pet pet) {
         this.pet = pet;
     }
+    
+    
 
 }
