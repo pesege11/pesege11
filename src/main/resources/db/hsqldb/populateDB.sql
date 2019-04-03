@@ -53,13 +53,6 @@ INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
 
-INSERT INTO causes VALUES (1, 'Cause name 1', 'Some description goes here', 'Organization x', 2000);
-INSERT INTO causes VALUES (2, 'Cause name 2', 'Some description goes here', 'Organization x', 3000);
-INSERT INTO causes VALUES (3, 'Cause name 3', 'Some description goes here', 'Organization y', 500);
+INSERT INTO causes VALUES (1,'Causa de prueba','Esto es una causa de prueba',2567.15,null,'Organizacion el Perico');
 
-INSERT INTO donations VALUES (1, 400, 1);
-INSERT INTO donations VALUES (2, 300, 2);
-INSERT INTO donations VALUES (3, 500, 2);
-INSERT INTO donations VALUES (4, 200, 3);
-INSERT INTO donations VALUES (5, 100, 3);
-INSERT INTO donations VALUES (6, 200, 3);
+INSERT INTO donations VALUES(1,200.5,'2019-02-14','Pepito',1);

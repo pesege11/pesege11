@@ -78,8 +78,17 @@ public interface ClinicService {
 
     void saveBooking(Booking booking);
     
-    Collection<Cause> findAllCauses();
+    
+    Collection<Cause> findAllCauses() throws DataAccessException;
 
-    Collection<Donation> findAllDonations();
+	void saveCause(Cause cause);
+
+	Cause findCauseById(int causeId) throws DataAccessException;
+
+	void saveDonation(Donation donation);
+
+	Collection<Donation> findDonationsByCauseId(int causeId) throws DataAccessException;
+
+	void deleteCause(int causeId) throws DataAccessException;
     
 }
