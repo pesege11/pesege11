@@ -4,7 +4,7 @@ SPRINT 1
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| 18 Marzo      |               |                |       -        |        -       |                |                |
+| 18 Marzo      |    :angry:    |                |       -        |        -       |                |                |
 | 19 Marzo      |               |                |       -        |        -       |                |                |
 | 20 Marzo      |               |                |       -        |        -       |                |                |
 | 21 Marzo      |               |                |       -        |        -       |                |                |
