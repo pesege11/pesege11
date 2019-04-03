@@ -1,6 +1,6 @@
 NIKONIKO CALENDAR
 
-SPRINT 1
+SEMANA 1
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
@@ -12,7 +12,7 @@ SPRINT 1
 | 23 Marzo      |               |                |    :smiley:    |     :smiley:   |                |                |
 | 24 Marzo      |               |                |       -        |        -       |                |                |
 
-SPRINT 2
+SEMANA 2
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
@@ -24,7 +24,7 @@ SPRINT 2
 | 30 Marzo      |               |                |       -        |        -       |                |                |
 | 31 Marzo      |               |                |       -        |     :smiley:   |                |                |
 
-SPRINT 3
+SEMANA 3
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
