@@ -34,4 +34,4 @@ SPRINT 3
 | 4 Abril       |     :angry:   |       -        |                |                |                |                |
 | 5 Abril       |       -       |   :worried:    |                |                |                |                |
 | 6 Abril       |    :worried:  |   :worried:    |                |                |                |                |
-| 7 Abril       |     :happy:   |   :angry:      |                |                |                |                |
+| 7 Abril       |:neutral_face: |   :angry:      |                |                |                |                |
