@@ -28,10 +28,10 @@ SPRINT 3
 
 | Day           |   Fernando    |   Antonio      | Jose Manuel    |    Andrea      |    Ismael      |    Julian      |
 | ------------- | ------------- | -------------  | -------------  | -------------  | -------------  | -------------  |
-| 1 Abril       |    :angry:    | :neutral_face: |                |                |                |                |
-| 2 Abril       |    :angry:    |   :angry:      |                |                |                |                |
-| 3 Abril       |   :worried:   |   :worried:    |                |                |                |                |
-| 4 Abril       |     :angry:   |       -        |                |                |                |                |
-| 5 Abril       |       -       |   :worried:    |                |                |                |                |
-| 6 Abril       |    :worried:  |   :worried:    |                |                |                |                |
-| 7 Abril       |:neutral_face: |   :angry:      |                |                |                |                |
+| 1 Abril       |    :angry:    | :neutral_face: |                |        -       |                |                |
+| 2 Abril       |    :angry:    |   :angry:      |                |        -       |                |                |
+| 3 Abril       |   :worried:   |   :worried:    |                |        -       |                |                |
+| 4 Abril       |     :angry:   |       -        |                |        -       |                |                |
+| 5 Abril       |       -       |   :worried:    |                |        -       |                |                |
+| 6 Abril       |    :worried:  |   :worried:    |                |     :smiley:   |                |                |
+| 7 Abril       |:neutral_face: |   :angry:      |                |        -       |                |                |
